@@ -31,7 +31,7 @@ def add():
     db.session.commit()
     return redirect(url_for("home"))#redirect or referesh home page
 
-
+#get id from todo list and update work is completed or not
 @app.route("/update/<int:todo_id>")
 def update(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
@@ -39,7 +39,7 @@ def update(todo_id):
     db.session.commit()
     return redirect(url_for("home"))
 
-
+#get id form todo list and delete
 @app.route("/delete/<int:todo_id>")
 def delete(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
