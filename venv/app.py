@@ -22,20 +22,20 @@ def home():
     todo_list = Todo.query.all()
     return render_template("base.html", todo_list=todo_list)
 
-
+# get a data and route post
 @app.route("/add", methods=["POST"])
 def add():
     title = request.form.get("title")
     new_todo = Todo(title=title, complete=False)
     db.session.add(new_todo)
     db.session.commit()
-    return redirect(url_for("home"))
+    return redirect(url_for("home"))#redirect or referesh home page
 
 
 @app.route("/update/<int:todo_id>")
 def update(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
-    todo.complete = not todo.complete
+    todo.complete = not todo.complete #it change the value of complete in database True or False using not operator
     db.session.commit()
     return redirect(url_for("home"))
 
@@ -43,10 +43,10 @@ def update(todo_id):
 @app.route("/delete/<int:todo_id>")
 def delete(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
-    db.session.delete(todo)
+    db.session.delete(todo) #it delete the todo list by its id
     db.session.commit()
     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    db.create_all()
+    db.create_all() #auto create database
     app.run(debug=True)
