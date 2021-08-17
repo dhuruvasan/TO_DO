@@ -11,9 +11,10 @@
 </head>
 
 <body>
+<!--  creating container    -->
     <div style="margin-top: 50px;" class="ui container">
         <h1 class="ui center aligned header">To Do App</h1>
-
+<!-- creating form for textbox and add button -->
         <form class="ui form" action="/add" method="post">
             <div class="field">
                 <label>Todo Title</label>
@@ -23,7 +24,7 @@
         </form>
 
         <hr>
-
+<!-- doing some python and show data and update and delete button -->
         {% for todo in todo_list %}
         <div class="ui segment">
             <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
