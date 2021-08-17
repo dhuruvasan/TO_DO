@@ -22,11 +22,11 @@ def home():
     todo_list = Todo.query.all()
     return render_template("base.html", todo_list=todo_list)
 
-# get a data and route post
+# get a title and set work complete default false in database and route post 
 @app.route("/add", methods=["POST"])
 def add():
     title = request.form.get("title")
-    new_todo = Todo(title=title, complete=False)
+    new_todo = Todo(title=title, complete=False)  
     db.session.add(new_todo)
     db.session.commit()
     return redirect(url_for("home"))#redirect or referesh home page
