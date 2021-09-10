@@ -20,7 +20,7 @@ class Todo(db.Model):
 @app.route("/")
 def home():
     todo_list = Todo.query.all()
-    return render_template("base.html", todo_list=todo_list)
+    return render_template("index.html", todo_list=todo_list)
 
 # get a title and set work complete default false in database and route post 
 @app.route("/add", methods=["POST"])
